@@ -1,0 +1,26 @@
+/* Omat tyylimääritykset */
+
+.bg-custom {
+	background-color: #090714;
+}
+
+/* Varmistaa, että footer pysyy aina alareunassa */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sisältöalue vie kaiken tilan, jotta footer pysyy alhaalla */
+.content {
+    flex: 1;
+    min-height: calc(100vh - 100px); /* Vähentää footerin korkeuden */
+}
+
+/* Footerin asetukset */
+.footer {
+    width: 100%;
+    margin-top: auto;
+}

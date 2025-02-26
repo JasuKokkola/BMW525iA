@@ -1,0 +1,321 @@
+<!-- HTML-versio (HTML 5), jota käytetään.-->
+<!DOCTYPE html>
+<html>
+    <!-- Yleiset (otsikkotason) määritykset. -->
+    <head>
+        <title>BMW 525iA</title>
+        <link rel="icon" type="img/x-icon" href="/img/bmwlogo.png">
+        <!-- Merkistän koodaustapa.-->
+        <meta charset="utf-8">
+        <!-- Katseluikkunan leveyden määritys: määritetään seuraamaan ruudun leveyttä. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- (Koneen hakemistosta haettu) Bootstrapin CSS-tiedosto. -->
+        <link rel="stylesheet" href="bootstrap-4.2.1-dist/css/bootstrap.min.css"> 
+        <!-- (Verkon yli haettu) Bootstrapin tarvitsema JQuery-tiedosto.-->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <!-- (Koneen hakemistosta haettu Popperin sisältävä) Bootstrapin JavaScript-tiedosto. -->
+        <script src="bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Oma css-tiedosto -->
+        <link rel="stylesheet" href="tyyli.css">
+    </head>
+
+    <body onload="LoadInitialContent()">
+		<!-- Navigointipalkki -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav d-flex justify-content-between align-items-center w-100">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#" onclick="textChange(0)">
+                        <img src="img/kuvallinenlinkki.png" alt="Logo" height="60">
+                    </a>
+                </li>
+                <li class="nav-item"><a class="nav-link text-dark" href="#" onclick="textChange(0)">Kotisivu</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="#" onclick="textChange(1)">Historia</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="#" onclick="textChange(2)">Tyyppiviat</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="#" onclick="textChange(3)">Valmistaja</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="#" onclick="textChange(4)">Yhteystiedot</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+		
+		<!-- Sisältöalue -->
+		<div class="container-fluid bg-white min-vh-80 ">
+			<div class="row" id="demo">
+				
+			</div>
+		</div>
+		
+		<!-- JavaScript-toiminnallisuus -->
+
+		<script>
+		
+		<!-- Sisällön vaihtaminen navigointipalkin valintojen perusteella -->
+		var textChange = function(index) {
+    // Poistetaan aktiivinen luokka kaikista navigointilinkeistä
+    document.querySelectorAll(".nav-item .nav-link").forEach(function(link) {
+        link.classList.remove("font-weight-bold");
+    });
+
+    // Lisätään aktiivinen luokka valittuun navigointilinkkiin
+    document.querySelectorAll(".nav-item .nav-link")[index + 1].classList.add("font-weight-bold");
+
+    // Päivitetään sisältö
+    if (index == 0) {
+        document.getElementById("demo").innerHTML = indexHTML;
+        document.getElementById("BrCr").innerHTML = indexBrCrHTML;
+    } else if (index == 1) {
+        document.getElementById("demo").innerHTML = HistoriaHTML;
+        document.getElementById("BrCr").innerHTML = historiaBrCrHTML;
+    } else if (index == 2) {
+        document.getElementById("demo").innerHTML = TyyppiviatHTML;
+        document.getElementById("BrCr").innerHTML = tyyppiviatBrCrHTML;
+    } else if (index == 3) {
+        document.getElementById("demo").innerHTML = ValmistajaHTML;
+        document.getElementById("BrCr").innerHTML = valmistajaBrCrHTML;
+    } else if (index == 4) {
+        document.getElementById("demo").innerHTML = YhteystiedotHTML;
+        document.getElementById("BrCr").innerHTML = yhteystiedotBrCrHTML;
+    }
+};
+		
+
+		<!-- Vaihtoehtoiset sisällöt -->
+
+		var footerHTML = `<footer class="bg-dark text-white text-center py-3 w-100" 
+							style="bottom: 0; left: 0; width: 100%;">
+							<style>
+								@media (max-width: 1920px) { /* Bootstrap 'md' breakpoint ja pienemmät */
+									footer {
+										position: static !important;
+									}
+								}
+								@media (min-width: 1921px) { /* Bootstrap 'md' breakpoint ja pienemmät */
+									footer {
+										position: fixed !important;
+									}
+								}
+							</style>
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-md-3 text-left"></div>
+									<div class="col-md-3 text-center">
+										<h5>Sivuston ylläpito</h5>
+										puh. 05012345678 <br>
+										sähköposti: jasunposti@bmw.fi <br>
+										<p>Esimerkkikatu 12 A1, Joensuu</p>
+									</div>
+									<div class="col-md-3 text-center">
+										<h5>BMW Suomi</h5>
+										<p>puh. 0207345920 <br>
+										sähköposti: fi.palaute@bmwgroup.com <br>
+										Lisätietoja: <a href="https://www.bmw.fi/fi/more-bmw/asiakaspalvelu.html" target="_blank" class="text-blue">BMW Suomi</a></p>
+									</div>
+									<div class="col-md-3 text-left"></div>
+								</div>
+							</div>
+						</footer>`;
+
+						
+		var indexHTML = `<div class="container py-4">
+							<div class="row align-items-center">
+								<div class="col-md-6">
+									<h2 class="text-left mb-0">BMW E60 525iA</h2>
+									<h6 class="text-left mt-0 mb-3">Ajamisen iloa</h6>
+									<p>BMW E60 525iA on 5-sarjan edustava ja ajomukavuutta korostava sedan, 
+									jota valmistettiin vuosina 2003–2010. Mallissa on 2.5-litrainen rivikuutonen 
+									M54-moottoriversio, joka tarjoaa rapeat 192 hevosvoimaa ja pehmeästi 
+									vaihtavan 6-vaihteisen automaattilaatikon. 525iA yhdistää dynaamisen 
+									ajettavuuden ja laadukkaan sisustuksen, jossa on mukavat mustat 
+									nahkaistuimet muistilla sekä muut kattavat varusteet, kuten laadukas 
+									äänentoisto sekä iDrive-yksikkö.</p>
+									<p>BMW:lle tyypillisesti auto on takavetoinen, siinä on hyvä painojakauma 
+									sekä tarkka ohjaustuntuma, mikä tekee siitä erinomaisen valinnan sekä 
+									arkiajoon että pidemmille matkoille. Tyylikäs ja rouhea muotoilu, 
+									laadukas viimeistely ja BMW:n takaama ajonautinto tekevät E60 525iA:sta  
+									edelleen suositun vaihtoehdon silloin, kun etsit laadukasta menopeliä 
+									sopivaan hintaan.</p>
+								</div>
+								<div class="col-md-6">
+									<img src="img/selainnakyman_peittama.jpg" class="img-fluid rounded" alt="BMW E60 525iA">
+								</div>
+							</div>
+							
+							<h3 class="text-center mt-5">Lisää kuvia</h3>
+								<div class="row text-center">
+									<div class="col-md-4">
+										<img src="img/10-30_nakyma.jpg" class="img-fluid rounded fixed-size" alt="BMW E60 Sisätilat">
+									</div>
+									<div class="col-md-4">
+										<img src="img/60-90_nakyma.jpg" class="img-fluid rounded fixed-size" alt="BMW E60 Ulkoa">
+									</div>
+									<div class="col-md-4">
+										<img src="img/varakuva.jpg" class="img-fluid rounded fixed-size" alt="BMW E60 Edestä">
+									</div>
+								</div>
+								</div>
+						<style>
+							.fixed-size {
+								width: 100%;
+								height: 450px;
+								object-fit: cover;
+							}
+						</style>
+						${footerHTML}`;
+	
+
+		var HistoriaHTML = `<div class="container py-4">
+							<div class="row align-items-center">
+								<div class="col-md-6">
+									<h2 class="text-left mb-0">Mallihistoria</h2> <br>
+									<p>BMW E60 525iA kuuluu viidennen sukupolven 5-sarjaan, jota valmistettiin vuosina 2003–
+									2010. Kyseinen malli edustaa siirtymää perinteisemmistä BMW-muodoista kohti
+									modernimpaa ja teknisesti kehittyneempää muotoilua. E60-mallisarja oli merkittävä
+									sekä riskialtis uudistus, sillä se toi mukanaan rohkean muotoilun, kehittyneitä
+									elektroniikkajärjestelmiä sekä parannetun ajodynamiikan.</p>
+									<p>525iA-mallia on ollut saatavilla eri moottoriversioilla tuotantovuoden mukaan.
+									Alkuvuosina 2003-2005 mallissa käytettiin M54-moottoria (192hv). Vuonna 2006
+									moottoriksi vaihtui uudempi ja tehokkaampi N52 (218hv). Molemmat versiot olivat
+									varustettuina 6-vaihteisella automaattivaihteistolla, joka tarjosi pehmeät vaihtamiset ja
+									miellyttävän ajokokemuksen. E60 5-sarja oli ulkonäön lisäksi myös teknologisesti
+									edistyksellinen aikakaudellaan. Mallistossa esiteltiin BMW:n iDrive-järjestelmä,
+									aktiivinen ohjaus ja erilaisia turvajärjestelmiä. Vaikka E60 jakoi mielipiteitä futuristisen
+									muotoilunsa vuoksi, vuosien aikana 525iA säilytti paikkansa mallistossa erinomaisena
+									yhdistelmänä suorituskykyä, mukavuutta ja ajettavuutta.</p>
+								</div>
+								<div class="col-md-6">
+								<video style="width: 100%; border-radius: 5px; overflow: hidden;" controls>
+									<source src="img/bmw_video2.mp4" type="video/mp4">
+									Selaimesi ei tue videon toistoa.
+								</video>
+								<p class="text-center">©BMW. <a href="https://www.youtube.com/watch?v=rTum8_9OWdA">Youtube-video</a></p>
+							</div>
+							</div>
+							<div class="spacer" style="height: 320px;"></div>
+							<style>
+								/* Media query piilottaa divin alle 762px näyttöleveyksillä */
+								@media (max-width: 767px) {
+									.spacer {
+										display: none;
+									}
+								}
+							</style>
+						</div> <!-- Suljetaan container -->
+						${footerHTML}`; 
+
+							
+        var TyyppiviatHTML = `<div class="container py-4">
+							<div class="row">
+								<div class="col-md-8 align-items-center">
+									<h2 class="text-left mb-0">BMW E60 Tyyppiviat</h2> <br>
+									<p>Kuten kaikissa automerkeissä ja -malleissa, niin myös E60-sarjalaisissa on havaittu
+									erilaisia tyyppivikoja, jotka voivat aiheutua suunnitteluvirheestä, ajan tuomasta
+									kulumisesta, huonolaatuisista osista tai muuten tunnetuiksi tulleista ongelmista.</p>\
+									<p>Mallisarjan tyyppivikoja ovat muun muassa ongelmat sähkölaitteistossa, esimerkiksi
+									akun purkautuminen, takakontin johtosarjan hiertyminen sekä iDrive-yksikön
+									hajoaminen tai sen hidas toiminta. Alustassa ja ohjauksessa mainittavia tyyppivikoja
+									ovat väljyys kallistuksenvakaimessa sekä ohjausnivelissä ja myös erilaiset ongelmat
+									akselistossa.</p>\
+								<p>Lisätietoja: <a href=\"https://www.autotie.fi/tyyppivika/bmw/5-sarja\" target=\"_blank\">Autotie - BMW 5-sarja tyyppiviat</a></p>\
+							</div>
+							<div class="col-md-4">
+									<img src="img/iDrive.jpg" class="img-fluid rounded mt-4" alt="BMW E60 iDrive">
+								</div>
+							</div>
+							<div class="spacer" style="height: 450px;"></div>
+							<style>
+								/* Media query piilottaa divin alle 762px näyttöleveyksillä */
+								@media (max-width: 767px) {
+									.spacer {
+										display: none;
+									}
+								}
+							</style>
+						</div> <!-- Suljetaan container -->
+						${footerHTML}`; 
+                        
+        var ValmistajaHTML = `<div class="container py-4">
+							<div class="row">
+								<div class="col-md-8 align-items-center">
+									<h2 class="text-left mb-0">Valmistaja</h2> <br>
+									<p>Bayerische Motoren Werke (BMW) on saksalainen premium-autovalmistaja, joka
+									tunnetaan laadukkaista, suorituskykyisistä ja teknologisesti edistyneistä autoistaan.
+									Yhtiö perustettiin vuonna 1916 aloittaen lentokonemoottorien valmistuksella ennen
+									siirtymistä moottoripyöriin ja autoihin. Yhtiön pääkonttori sijaitsee Münchenissä, Saksassa </p>\
+									<p>BMW:n mallisto kattaa laajamittaisesti niin urheilulliset sedanit, katumaasturit sekä
+									luksusautot, joissa yhdistyvät ajodynamiikka, tehokkaat moottorit ja innovatiiviset
+									teknologiat. Merkin tunnuslause 'Ajamisen iloa' kuvastaa sen panostusta ajokokemukseen. </p>\
+									<p>BMW poikkeaa muista autovalmistajista valmistaen pitkälti pelkästään takavetoisia
+									autoja. Autoissa ei myöskään käytetä V6-moottoria, vaan pitkittäisasennettuja
+									kuusisylinterisiä rivimoottoreita. BMW on kilpaillut ostajista ja markkina-asemastaan
+									pitkän aikaa eritoten Mercedes-Benz:in kanssa. Automalleja valmistetaan Saksassa
+									Münchenissa, Dingolfingissä, Regensburgissa sekä Leipzigissä ja näiden lisäksi myös
+									seitsemässä eri maassa. </p> \
+									<p>Lisätietoja: <a href=\"https://fi.wikipedia.org/wiki/BMW\" target=\"_blank\">Wikipedia - BMW</a></p>\
+									</div>
+									<div class="col-md-4">
+									<img src="img/munchen.jpg" class="img-fluid rounded mt-4" alt="Munchen Map">
+									<p class="text-center">Kuva: <a href="https://www.google.com/maps/place/M%C3%BCnchen,+Saksa/@48.1549958,11.4594364,12z/data=!3m1!4b1!4m6!3m5!1s0x479e75f9a38c5fd9:0x10cb84a7db1987d!8m2!3d48.1351253!4d11.5819805!16s%2Fm%2F02h6_6p?entry=ttu&g_ep=EgoyMDI1MDIxOS4xIKXMDSoASAFQAw%3D%3D">Google Maps</a></p>
+								</div>
+							</div>
+							<div class="spacer" style="height: 320px;"></div>
+							<style>
+								/* Media query piilottaa divin alle 762px näyttöleveyksillä */
+								@media (max-width: 767px) {
+									.spacer {
+										display: none;
+									}
+								}
+							</style>
+						</div> <!-- Suljetaan container -->
+						${footerHTML}`; 
+
+         var YhteystiedotHTML = `<div class="container py-4">
+							<div class="row">
+								<div class="col-md-8 align-items-center">
+									<h2 class="text-left mb-0">Yhteystiedot</h2> <br>
+									<h6>Sivuston ylläpito: </h6> \
+									<p>Jasu Kokkola<br> \
+									puh. 05012345678 <br> \
+									sähköposti: jasunposti@bmw.fi <br> \
+									Osoite: Esimerkkikatu 12 A1 <br> \
+									Postinumero: 80110, Joensuu <br>
+									<br>
+									<br></p>\
+									<h6>BMW Suomi: </h6> \
+									<p>puh. 0207345920 <br> \
+									sähköposti: fi.palaute@bmwgroup.com <br>
+									Osoite: Äyritie 8c <br>\
+									Postinumero: 01510, Vantaa <br>\
+									Lisätietoja: <a href=\"https://www.bmw.fi/fi/more-bmw/asiakaspalvelu.html\" target=\"_blank\">BMW Suomi</a></p>\
+									</div>
+									<div class="col-md-4">
+									<img src="img/joensuu.jpg" class="img-fluid rounded mt-4" alt="Joensuu Map">
+									<p class="text-center">Kuva: <a href="https://www.google.fi/maps?q=Joensuu">Google Maps</a></p>
+								</div>
+							</div>
+							<div class="spacer" style="height: 300px;"></div>
+							<style>
+								/* Media query piilottaa divin alle 762px näyttöleveyksillä */
+								@media (max-width: 767px) {
+									.spacer {
+										display: none;
+									}
+								}
+							</style>
+						</div> <!-- Suljetaan container -->
+						${footerHTML}`; 
+
+		<!-- Latausfunktio aloitussisällön lataamiseksi -->
+		function LoadInitialContent() {
+		  document.getElementById("demo").innerHTML = indexHTML;
+		  textChange(0);
+		}
+	  </script>
+	</body>
+</html>
